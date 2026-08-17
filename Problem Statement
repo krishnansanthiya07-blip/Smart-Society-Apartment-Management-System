@@ -1,0 +1,26 @@
+Problem Statement:
+Traditional apartment management often relies on manual records and scattered communication for handling resident complaints, maintenance activities, and payment tracking, leading to delays and lack of transparency.
+
+The proposed Society Management System is a centralized web application that streamlines these activities through three role-based modules:Resident, Admin, and Maintenance Team. It enables efficient complaint tracking, payment management, and maintenance coordination while providing secure access to relevant information for each user.
+
+Key Features:
+-Resident:Manage profile, payments, and complaints.
+-Admin:Manage residents, apartments, payments, and overall activities.
+-Maintenance Team:Track, update, and resolve complaints.
+
+Technologies:
+-Python 
+-Django
+-HTML
+-CSS
+-JavaScript
+-SQLite
+-GitHub
+
+Future Scope:
+-Online payments
+-Notifications
+-Visitor management
+-Facility booking
+-Analytics 
+-Mobile application integration.
