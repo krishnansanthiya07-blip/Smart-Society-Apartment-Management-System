@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Profile</title>
+</head>
+
+<body>
+
+    <h1>My Profile</h1>
+
+    <p><b>Name:</b>{{resident.name}}</p>
+    <p><b>Apartment Number:</b> A-101</p>
+    {{resident.apartment}}</p>
+    <p><b>Floor:</b>{{apartment.floor}}</p>
+    <p><b>Phone:</b>{{resident.phone}}</p>
+    <p><b>Email:</b>{{resident.email}}</p>
+
+
+    <a href="{% url 'resident_dashboard' %}">
+        Back to Dashboard
+    </a>
+
+</body>
+</html>

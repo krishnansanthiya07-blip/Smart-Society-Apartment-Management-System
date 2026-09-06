@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Resident Dashboard</title>
+</head>
+<body>
+
+    <h1>Welcome to Resident Dashboard</h1>
+    <p>Welcome,{{resident.name}}</p>
+
+    <h2>Resident Services</h2>
+
+    <ul>
+        <li>
+            <a href="{% url 'resident_profile'%}">My Profile</a>
+        </li>
+        <li>
+            <a href="/apartment-details/">Apartment Details</a>
+        <li>
+        <li>
+            <a href="{% url 'payments'%}">Payments</a></li>
+        <li>
+            <a href="{% url 'complaints'%}">Complaints</a>
+        </li>
+        </li>
+            <a href="{% url 'maintenance'%}">Maintenance</a>
+        </li>
+    </ul>
+
+</body>
+</html>

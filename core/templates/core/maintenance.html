@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Maintenance</title>
+</head>
+
+<body>
+
+    <h1>Maintenance Team</h1>
+
+    {% for team in teams %}
+        <p><b>Name:</b> {{ team.name }}</p>
+        <p><b>Role:</b> {{ team.role }}</p>
+        <p><b>Phone:</b> {{ team.phone }}</p>
+        <hr>
+    {% empty %}
+        <p>No maintenance team details found.</p>
+    {% endfor %}
+
+    <a href="{% url 'resident_dashboard' %}">
+        Back to Dashboard
+    </a>
+
+</body>
+</html>

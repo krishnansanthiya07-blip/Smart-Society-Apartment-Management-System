@@ -1,16 +1,26 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html>
 <head>
+    {%load static %}
     <title>Smart Society</title>
+    <link rel="stylesheet"href="/static'core/style.css">
 </head>
+
 <body>
 
     <h1>Smart Society</h1>
     <h2>Apartment Management System</h2>
 
-    <p>Manage residents, complaints, payments and maintenance activities in one place.</p>
+    <p>
+        Manage residents, complaints, payments and
+        maintenance activities in one place.
+    </p>
 
-    <button>Resident Login</button>
+    <a href="/resident-login/">
+        <button>Resident Login</button>
+    </a>
     <button>Admin Login</button>
     <button>Maintenance Login</button>
 

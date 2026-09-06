@@ -75,8 +75,12 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'smart_society',
+        'USER': 'root',
+        'PASSWORD': 'MYsql@00',
+        'HOST': 'localhost',
+        'PORT': '3306',
     }
 }
 

@@ -1,0 +1,26 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Resident Login</title>
+    <link rel="stylesheet" href="{% static 'core/style.css' %}">
+</head>
+
+<body>
+
+    <h1>Resident Login</h1>
+
+    <form action="{%url 'resident_dashboard'%}" 
+    method="get">
+        <label>Username</label><br>
+        <input type="text" placeholder="Enter Username"><br><br>
+
+        <label>Password</label><br>
+        <input type="password" placeholder="Enter Password"><br><br>
+
+        <button type="submit">Login</button>
+    </form>
+
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Complaints</title>
+</head>
+
+<body>
+
+    <h1>My Complaints</h1>
+
+    <p>{% for complaint in complaints %}
+    <p><b>Title:</b> {{ complaint.title }}</p>
+    <p><b>Description:</b> {{ complaint.description }}</p>
+    <p><b>Status:</b> {{ complaint.status }}</p>
+    <hr>
+{% empty %}
+    <p>No complaints found.</p>
+{% endfor %}</p>
+
+    <a href="{% url 'resident_dashboard' %}">
+        Back to Dashboard
+    </a>
+
+</body>
+</html>
