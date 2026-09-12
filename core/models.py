@@ -64,6 +64,8 @@ class Complaint(models.Model):
 
     def __str__(self):
         return self.title
+
+
 class MaintenanceTeam(models.Model):
     name = models.CharField(max_length=100)
     role = models.CharField(max_length=50)
@@ -71,4 +73,3 @@ class MaintenanceTeam(models.Model):
 
     def __str__(self):
         return self.name
-

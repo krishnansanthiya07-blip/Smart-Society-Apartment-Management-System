@@ -28,5 +28,6 @@ urlpatterns= [
     path('apartment-details/',views.apartment_details,name='apartment_details'),
     path('payments/',views.payments,name='payments'),
     path('complaints/',views.complaints,name='complaints'),
+    path('add-complaint/',views.add_complaint,name='add_complaint'),
     path('maintenance/',views.maintenance,name='maintenance'),
 ]

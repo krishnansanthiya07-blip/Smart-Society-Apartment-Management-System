@@ -1,38 +1,31 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
     <title>Payments</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'core/style.css' %}">
 </head>
-
 <body>
 
-    <h1>Payments</h1>
-
-    <!DOCTYPE html>
-<html>
-<head>
-    <title>Payments</title>
-</head>
-
-<body>
+<div class="container">
 
     <h1>Payments</h1>
 
     {% for payment in payments %}
-    <p><b>Amount:</b> ₹{{ payment.amount }}</p>
-    <p><b>Payment Date:</b> {{ payment.payment_date }}</p>
-    <p><b>Status:</b> {{ payment.status }}</p>
-    <hr>
-{% empty %}
-    <p>No payment records found.</p>
-{% endfor %}
+        <div class="payment-card">
+            <p><b>Amount:</b> ₹{{ payment.amount }}</p>
+            <p><b>Payment Date:</b> {{ payment.payment_date }}</p>
+            <p><b>Status:</b> {{ payment.status }}</p>
+        </div>
+    {% empty %}
+        <p>No payment records found.</p>
+    {% endfor %}
 
-</body>
-</html>
+    <br>
 
-    <a href="{% url 'resident_dashboard' %}">
-        Back to Dashboard
-    </a>
+    <a href="{% url 'resident_dashboard' %}">Back to Dashboard</a>
+
+</div>
 
 </body>
 </html>

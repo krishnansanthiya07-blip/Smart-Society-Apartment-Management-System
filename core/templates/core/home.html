@@ -3,9 +3,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-    {%load static %}
     <title>Smart Society</title>
-    <link rel="stylesheet"href="/static'core/style.css">
+
+    <link rel="stylesheet" href="{% static 'core/style.css' %}">
 </head>
 
 <body>
@@ -21,8 +21,13 @@
     <a href="/resident-login/">
         <button>Resident Login</button>
     </a>
-    <button>Admin Login</button>
-    <button>Maintenance Login</button>
+
+    <a href="/admin-login/">
+        <button>Admin Login</button>
+    </a>
+    <a href="/maintenance-login/">
+        <button>Maintenance Login</button>
+    </a>
 
 </body>
 </html>

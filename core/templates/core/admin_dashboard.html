@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="{% static 'core/style.css' %}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Admin Dashboard</h1>
+
+    <h2>Dashboard Summary</h2>
+
+    <p>Total Residents: {{ residents }}</p>
+    <p>Total Apartments: {{ apartments }}</p>
+    <p>Total Complaints: {{ complaints }}</p>
+    <p>Total Payments: {{ payments }}</p>
+
+    <h2>Admin Services</h2>
+
+    <ul>
+        <li>Manage Residents</li>
+        <li>Manage Apartments</li>
+        <li>View Payments</li>
+        <li>View Complaints</li>
+        <li>Manage Maintenance Team</li>
+    </ul>
+
+    <br>
+
+    <a href="{% url 'home' %}">Back to Home</a>
+
+</div>
+
+</body>
+</html>

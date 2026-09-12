@@ -7,6 +7,8 @@
 <body>
 
     <h1>My Complaints</h1>
+    <a href="{% url 'add_complaint' %}">Add New Complaint</a>
+    <br><br>
 
     <p>{% for complaint in complaints %}
     <p><b>Title:</b> {{ complaint.title }}</p>

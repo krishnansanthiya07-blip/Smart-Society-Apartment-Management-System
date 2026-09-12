@@ -1,12 +1,19 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
     <title>Resident Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'core/style.css' %}">
 </head>
 <body>
 
-    <h1>Welcome to Resident Dashboard</h1>
-    <p>Welcome,{{resident.name}}</p>
+    <div class="container">
+        <h1>Welcome to Resident Dashboard</h1>
+        <p>Welcome,{{resident.name}}</p>
+        <h2>Complaint Summary</h2>
+
+<p>Total Complaints: {{ total_complaints }}</p>
+<p>Pending Complaints: {{ pending_complaints }}</p>
 
     <h2>Resident Services</h2>
 
