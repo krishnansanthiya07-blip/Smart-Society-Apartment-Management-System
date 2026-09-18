@@ -14,22 +14,38 @@
 
     <h2>Dashboard Summary</h2>
 
-    <p>Total Residents: {{ residents }}</p>
-    <p>Total Apartments: {{ apartments }}</p>
-    <p>Total Complaints: {{ complaints }}</p>
-    <p>Total Payments: {{ payments }}</p>
+    <p>Total Residents: {{ total_residents }}</p>
+    <p>Total Apartments: {{ total_apartments }}</p>
+    <p>Total Complaints: {{ total_complaints }}</p>
+    <p>Total Payments: {{ total_payments }}</p>
 
     <h2>Admin Services</h2>
 
     <ul>
-        <li>Manage Residents</li>
-        <li>Manage Apartments</li>
-        <li>View Payments</li>
-        <li>View Complaints</li>
-        <li>Manage Maintenance Team</li>
+        <li>
+            <a href="{% url 'manage_residents' %}">Manage Residents</a>
+        </li>
+
+        <li>
+            <a href="{% url 'manage_apartments' %}">Manage Apartments</a>
+        </li>
+
+        <li>
+            <a href="{% url 'admin_payments' %}">View Payments</a>
+        </li>
+
+        <li>
+            <a href="{% url 'admin_complaints' %}">View Complaints</a>
+        </li>
+
+        <li>
+            <a href="{% url 'admin_maintenance' %}">Manage Maintenance Team</a>
+        </li>
     </ul>
 
     <br>
+    <a href="/admin-logout/">Logout</a>
+
 
     <a href="{% url 'home' %}">Back to Home</a>
 

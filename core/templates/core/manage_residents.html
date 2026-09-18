@@ -1,0 +1,36 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Manage Residents</title>
+    <link rel="stylesheet" href="{% static 'core/style.css' %}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Manage Residents</h1>
+
+    {% for resident in residents %}
+        <div class="payment-card">
+            <p><b>Name:</b> {{ resident.name }}</p>
+            <p><b>Email:</b> {{ resident.email }}</p>
+            <p><b>Phone:</b> {{ resident.phone }}</p>
+            <p><b>Apartment:</b> {{ resident.apartment.apartment_number }}</p>
+        </div>
+    {% empty %}
+        <p>No residents found.</p>
+    {% endfor %}
+
+    <br>
+
+    <a href="{% url 'admin_dashboard' %}">
+        Back to Dashboard
+    </a>
+
+</div>
+
+</body>
+</html>

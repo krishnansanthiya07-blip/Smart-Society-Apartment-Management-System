@@ -61,6 +61,12 @@ class Complaint(models.Model):
         default="PENDING"
     )
     created_at = models.DateTimeField(auto_now_add=True)
+    assigned_to=models.ForeignKey(
+        'MaintenanceTeam',
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True
+    )
 
     def __str__(self):
         return self.title

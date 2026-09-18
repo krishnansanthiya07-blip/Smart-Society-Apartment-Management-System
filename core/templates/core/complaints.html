@@ -1,27 +1,45 @@
+{% load static %}
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Complaints</title>
+    <link rel="stylesheet" href="{% static 'core/style.css' %}">
 </head>
-
 <body>
+    <div class="container">
+        <h1>My Complaints</h1>
 
-    <h1>My Complaints</h1>
-    <a href="{% url 'add_complaint' %}">Add New Complaint</a>
-    <br><br>
+        {% if complaints %}
+            <table border="1">
+                <tr>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Status</th>
+                </tr>
 
-    <p>{% for complaint in complaints %}
-    <p><b>Title:</b> {{ complaint.title }}</p>
-    <p><b>Description:</b> {{ complaint.description }}</p>
-    <p><b>Status:</b> {{ complaint.status }}</p>
-    <hr>
-{% empty %}
-    <p>No complaints found.</p>
-{% endfor %}</p>
+                {% for complaint in complaints %}
+                    <tr>
+                        <td>{{ complaint.title }}</td>
+                        <td>{{ complaint.description }}</td>
+                        <td>{{ complaint.status }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        {% else %}
+            <p>No complaints found.</p>
+        {% endif %}
 
-    <a href="{% url 'resident_dashboard' %}">
-        Back to Dashboard
-    </a>
+        <br>
 
+        <a href="{% url 'add_complaint' %}">Add Complaint</a>
+        <br><br>
+
+        <a href="{% url 'resident_dashboard' %}">
+            Back to Dashboard
+        </a>
+    </div>
 </body>
 </html>

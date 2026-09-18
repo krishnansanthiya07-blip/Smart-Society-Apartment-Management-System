@@ -1,31 +1,49 @@
-{% load static %}
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Payments</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'core/style.css' %}">
 </head>
 <body>
 
-<div class="container">
+    <div class="container">
 
-    <h1>Payments</h1>
+        <h1>Payment Details</h1>
 
-    {% for payment in payments %}
-        <div class="payment-card">
-            <p><b>Amount:</b> ₹{{ payment.amount }}</p>
-            <p><b>Payment Date:</b> {{ payment.payment_date }}</p>
-            <p><b>Status:</b> {{ payment.status }}</p>
-        </div>
-    {% empty %}
-        <p>No payment records found.</p>
-    {% endfor %}
+        {% if payments %}
 
-    <br>
+            <table border="1">
 
-    <a href="{% url 'resident_dashboard' %}">Back to Dashboard</a>
+                <tr>
+                    <th>Amount</th>
+                    <th>Status</th>
+                </tr>
 
-</div>
+                {% for payment in payments %}
+
+                    <tr>
+                        <td>{{ payment.amount }}</td>
+                        <td>{{ payment.status }}</td>
+                    </tr>
+
+                {% endfor %}
+
+            </table>
+
+        {% else %}
+
+            <p>No payment details found.</p>
+
+        {% endif %}
+
+        <br>
+
+        <a href="{% url 'resident_dashboard' %}">
+            Back to Dashboard
+        </a>
+
+    </div>
 
 </body>
 </html>

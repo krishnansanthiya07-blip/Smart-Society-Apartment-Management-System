@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Maintenance Dashboard</title>
+</head>
+<body>
+
+    <h2>Maintenance Team Dashboard</h2>
+
+    <h3>Welcome, {{ member.name }}</h3>
+    <p>Role: {{ member.role }}</p>
+    <p>Phone: {{ member.phone }}</p>
+
+    <hr>
+
+    <h3>Assigned Complaints</h3>
+
+    {% if complaints %}
+        {% for complaint in complaints %}
+            <div>
+                <h4>{{ complaint.title }}</h4>
+                <p>{{ complaint.description }}</p>
+                <p>Status: {{ complaint.status }}</p>
+                <form method="POST"
+      action="{% url 'update_maintenance_status' complaint.id %}">
+
+    {% csrf_token %}
+
+    <label>Update Status:</label>
+
+    <select name="status">
+        <option value="Pending">Pending</option>
+        <option value="In Progress">In Progress</option>
+        <option value="Resolved">Resolved</option>
+    </select>
+
+    <button type="submit">Update Status</button>
+
+</form>
+                <hr>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>No complaints assigned.</p>
+    {% endif %}
+
+<br>
+    <a href="{% url 'maintenance_logout' %}">Logout</a>
+</body>
+</html>
