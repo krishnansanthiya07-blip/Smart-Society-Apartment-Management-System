@@ -1,25 +1,41 @@
+{% load static %}
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
+    <meta charset="UTF-8">
     <title>Maintenance Login</title>
+
+    <link rel="stylesheet" href="{% static 'core/style.css' %}">
 </head>
-<body>
 
-    <h2>Maintenance Team Login</h2>
+<body class="login-page">
 
-    <form method="POST">
-        {% csrf_token %}
+    <div class="login-container">
 
-        <label>Name:</label>
-        <input type="text" name="name" required>
-        <br><br>
+        <h1>Maintenance Login</h1>
 
-        <label>Phone:</label>
-        <input type="text" name="phone" required>
-        <br><br>
+        <form method="POST">
 
-        <button type="submit">Login</button>
-    </form>
+            {% csrf_token %}
+
+            <label>Name:</label>
+            <input type="text" name="name" required>
+
+            <label>Phone:</label>
+            <input type="text" name="phone" required>
+
+            <button type="submit">Login</button>
+
+        </form>
+
+        <br>
+
+        <a href="/">Back to Home</a>
+
+    </div>
 
 </body>
+
 </html>

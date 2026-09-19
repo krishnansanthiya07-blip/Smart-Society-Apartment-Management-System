@@ -3,31 +3,33 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Smart Society</title>
-
+    <title>Kismet Abode</title>
     <link rel="stylesheet" href="{% static 'core/style.css' %}">
 </head>
 
-<body>
+<body class="hero">
 
-    <h1>Smart Society</h1>
-    <h2>Apartment Management System</h2>
+    <div class="hero">
 
-    <p>
-        Manage residents, complaints, payments and
-        maintenance activities in one place.
-    </p>
+        <div class="creative-logo">
+    <div class="logo-symbol">K</div>
+    <div class="logo-name">KISMET</div>
+    <div class="logo-subtitle">ABODE</div>
+</div>
 
-    <a href="/resident-login/">
-        <button>Resident Login</button>
-    </a>
+        <h1>Welcome to Kismet Abode</h1>
 
-    <a href="/admin-login/">
-        <button>Admin Login</button>
-    </a>
-    <a href="/maintenance-login/">
-        <button>Maintenance Login</button>
-    </a>
+        <p>Better Living • Together</p>
+
+        <div class="home-buttons">
+            <a href="{% url 'resident_login' %}">Resident Login</a>
+            <a href="{% url 'admin_login' %}">Admin Login</a>
+            <a href="{% url 'maintenance_login' %}">
+                Maintenance Login
+            </a>
+        </div>
+
+    </div>
 
 </body>
 </html>

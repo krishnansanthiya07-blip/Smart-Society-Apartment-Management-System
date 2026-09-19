@@ -1,24 +1,24 @@
-body {
+ {
     font-family: Arial, sans-serif;
-    background-color: #f4f6f8;
+    background: linear-gradient(135deg, #6f91bd, #126e82, #62c9c9);
     margin: 0;
     padding: 40px;
 }
 
 .container {
-    background-color: white;
-    max-width: 900px;
-    margin: auto;
-    padding: 30px;
-    border-radius: 10px;
-}
+    background: rgba(255, 255, 255, 0.649);
+    backdrop-filter: blur(12px);
+    border-radius: 25px;
+    padding: 50px;
+    min-height: 80vh;
+}body
 
 h1 {
-    color: #1f2937;
+    color: #8d09c183;
 }
 
 h2 {
-    color: #374151;
+    color: #03122b;
     margin-top: 30px;
 }
 
@@ -52,9 +52,243 @@ a:hover {
     padding: 20px;
     margin: 15px 0;
     border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 8px rgba(122, 101, 101, 0.1);
 }
 
 .payment-card p {
     margin: 8px 0;
+}
+/* Kismet Abode Premium Home */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    color: rgb(70, 58, 58);
+}
+
+.hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px 20px;
+
+    background-image:
+        linear-gradient(
+            rgba(111, 156, 215, 0.35),
+            rgba(5, 20, 40, 0.35)
+        ),
+        url("/static/core/images/kismet_home.png");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+
+.society-logo {
+    width: 230px;
+    max-width: 80%;
+    margin-bottom: 25px;
+    border-radius: 18px;
+}
+
+.hero h1 {
+    font-size: 42px;
+    margin: 10px 0;
+    color: rgb(64, 155, 195);
+    letter-spacing: 1px;
+}
+
+.hero p {
+    font-size: 20px;
+    letter-spacing: 3px;
+    margin-bottom: 35px;
+}
+
+.home-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+}
+
+.home-buttons a {
+    background: rgb(23, 134, 174);
+    color: #073b4c;
+    padding: 14px 25px;
+    border-radius: 30px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.home-buttons a:hover {
+    background: #f4c95d;
+    color: #071e3d;
+    transform: translateY(-4px);
+}
+
+@media (max-width: 600px) {
+
+    .hero h1 {
+        font-size: 28px;
+    }
+
+    .hero p {
+        font-size: 14px;
+        letter-spacing: 2px;
+    }
+
+    .home-buttons {
+        flex-direction: column;
+        width: 80%;
+    }
+
+    .home-buttons a {
+        width: 100%;
+    }
+}
+.creative-logo {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.logo-symbol {
+    width: 85px;
+    height: 85px;
+    margin: auto;
+    border: 3px solid #f4c95d;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 58px;
+    font-weight: bold;
+    color: #f4c95d;
+    box-shadow: 0 0 25px rgba(244, 201, 93, 0.4);
+}
+
+.logo-name {
+    margin-top: 12px;
+    font-size: 34px;
+    font-weight: bold;
+    letter-spacing: 6px;
+    color: rgb(15, 167, 173);
+}
+
+.logo-subtitle {
+    font-size: 18px;
+    letter-spacing: 8px;
+    color: #f4c95d;
+    margin-top: 5px;
+}
+.hero {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.society-logo {
+    width: 180px;
+    height: 180px;
+    object-fit: contain;
+    margin: 0 auto 20px;
+    display: block;
+}
+
+.hero h1 {
+    font-size: 42px;
+    margin: 15px 0;
+}
+
+.hero p {
+    text-align: center;
+    font-size: 20px;
+    margin: 15px 0 35px;
+}
+.login-container input {
+    background-color: rgb(23, 155, 203);
+    color: #222;
+    border: 1px solid #0a6571;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+.login-container input::placeholder {
+    color: #14363d;
+}
+
+/* Common Login Page Design */
+
+.login-page {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #05668d, #02c39a);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-container {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 45px;
+    border-radius: 30px;
+    width: 420px;
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.2);
+}
+
+.login-container h1 {
+    color: #34495e;
+    text-align: center;
+}
+
+.login-container label {
+    color: #34495e;
+    font-weight: bold;
+}
+.login-page {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #05668d, #02c39a);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-container {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 45px;
+    border-radius: 30px;
+    width: 420px;
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.2);
+}
+
+.login-container h1 {
+    color: #34495e;
+    text-align: center;
+}
+
+.login-container label {
+    display: block;
+    color: #34495e;
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+.login-container input {
+    width: 100%;
+    padding: 12px;
+    margin-top: 5px;
+    box-sizing: border-box;
+}
+
+.login-container button {
+    margin-top: 20px;
+    padding: 12px 25px;
+    cursor: pointer;
 }

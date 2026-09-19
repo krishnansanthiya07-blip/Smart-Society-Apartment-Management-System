@@ -1,50 +1,180 @@
+{% load static %}
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
+    <meta charset="UTF-8">
     <title>Maintenance Dashboard</title>
+
+    <link rel="stylesheet" href="{% static 'core/style.css' %}">
+
+    <style>
+        .complaint-card {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 25px;
+            margin: 20px 0;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .complaint-card h4 {
+            color: #05668d;
+            font-size: 22px;
+        }
+
+        .complaint-card p {
+            color: #333;
+            font-size: 16px;
+        }
+
+        .complaint-card strong {
+            color: #123;
+        }
+
+        select {
+            padding: 10px;
+            border-radius: 8px;
+            margin: 10px 0;
+        }
+
+        button {
+            padding: 10px 18px;
+            border: none;
+            border-radius: 8px;
+            background-color: #05668d;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #02c39a;
+        }
+
+        .logout {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+
 </head>
+
 <body>
 
-    <h2>Maintenance Team Dashboard</h2>
+    <div class="container">
 
-    <h3>Welcome, {{ member.name }}</h3>
-    <p>Role: {{ member.role }}</p>
-    <p>Phone: {{ member.phone }}</p>
+        <h2>Maintenance Team Dashboard</h2>
 
-    <hr>
+        <h3>Welcome, {{ member.name }}</h3>
 
-    <h3>Assigned Complaints</h3>
+        <p>Role: {{ member.role }}</p>
+        <p>Phone: {{ member.phone }}</p>
 
-    {% if complaints %}
-        {% for complaint in complaints %}
-            <div>
-                <h4>{{ complaint.title }}</h4>
-                <p>{{ complaint.description }}</p>
-                <p>Status: {{ complaint.status }}</p>
-                <form method="POST"
-      action="{% url 'update_maintenance_status' complaint.id %}">
+        <hr>
 
-    {% csrf_token %}
+        <h3>Assigned Complaints</h3>
 
-    <label>Update Status:</label>
+        {% if complaints %}
 
-    <select name="status">
-        <option value="Pending">Pending</option>
-        <option value="In Progress">In Progress</option>
-        <option value="Resolved">Resolved</option>
-    </select>
+            {% for complaint in complaints %}
 
-    <button type="submit">Update Status</button>
+                <div class="complaint-card">
 
-</form>
-                <hr>
-            </div>
-        {% endfor %}
-    {% else %}
-        <p>No complaints assigned.</p>
-    {% endif %}
+                    <h4>{{ complaint.title }}</h4>
 
-<br>
-    <a href="{% url 'maintenance_logout' %}">Logout</a>
+                    <p>
+                        <strong>Description:</strong>
+                        {{ complaint.description }}
+                    </p>
+
+                    <hr>
+
+                    <h4>Apartment Details</h4>
+
+                    <p>
+                        <strong>Resident Name:</strong>
+                        {{ complaint.resident.name }}
+                    </p>
+
+                    <p>
+                        <strong>Apartment Number:</strong>
+                        {{ complaint.resident.apartment.apartment_number }}
+                    </p>
+
+                    <p>
+                        <strong>Block:</strong>
+                        {{ complaint.resident.apartment.block }}
+                    </p>
+
+                    <p>
+                        <strong>Floor:</strong>
+                        {{ complaint.resident.apartment.floor }}
+                    </p>
+
+                    <hr>
+
+                    <p>
+                        <strong>Current Status:</strong>
+                        {{ complaint.get_status_display }}
+                    </p>
+
+                    <form method="POST"
+                          action="{% url 'update_maintenance_status' complaint.id %}">
+
+                        {% csrf_token %}
+
+                        <label>
+                            <strong>Update Status:</strong>
+                        </label>
+
+                        <br>
+
+                        <select name="status">
+
+                            <option value="PENDING"
+                                {% if complaint.status == "PENDING" %}selected{% endif %}>
+                                Pending
+                            </option>
+
+                            <option value="IN_PROGRESS"
+                                {% if complaint.status == "IN_PROGRESS" %}selected{% endif %}>
+                                In Progress
+                            </option>
+
+                            <option value="RESOLVED"
+                                {% if complaint.status == "RESOLVED" %}selected{% endif %}>
+                                Resolved
+                            </option>
+
+                        </select>
+
+                        <br>
+
+                        <button type="submit">
+                            Update Status
+                        </button>
+
+                    </form>
+
+                </div>
+
+            {% endfor %}
+
+        {% else %}
+
+            <p>No complaints assigned.</p>
+
+        {% endif %}
+
+        <br>
+
+        <a class="logout"
+           href="{% url 'maintenance_logout' %}">
+            Logout
+        </a>
+
+    </div>
+
 </body>
+
 </html>
