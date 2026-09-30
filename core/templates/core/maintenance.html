@@ -1,0 +1,69 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Maintenance Team</title>
+
+    <link rel="stylesheet" href="{% static 'core/style.css' %}">
+</head>
+
+<body class="maintenance-team-page">
+
+    <div class="maintenance-team-container">
+
+        <h1>🔧 Maintenance Team</h1>
+
+        <p class="page-subtitle">
+            View available maintenance team members
+        </p>
+
+        <div class="team-grid">
+
+            {% for team in teams %}
+
+                <div class="team-card">
+
+                    <div class="team-icon">🔧</div>
+
+                    <h2>{{ team.name }}</h2>
+
+                    <p>
+                        <strong>Role:</strong>
+                        {{ team.role }}
+                    </p>
+
+                    <p>
+                        <strong>Phone:</strong>
+                        {{ team.phone }}
+                    </p>
+
+                </div>
+
+            {% empty %}
+
+                <div class="empty-team">
+                    <h2>No Maintenance Team Found</h2>
+                    <p>No maintenance team members are currently available.</p>
+                </div>
+
+            {% endfor %}
+
+        </div>
+
+        <br>
+
+        <a class="back-dashboard"
+           href="{% url 'resident_dashboard' %}">
+            ← Back to Dashboard
+        </a>
+
+    </div>
+
+</body>
+
+</html>

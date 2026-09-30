@@ -1,0 +1,100 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apartment Details</title>
+
+    <link rel="stylesheet" href="{% static 'core/style.css' %}">
+
+    <style>
+        .details-page {
+            min-height: 100vh;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #dbeafe, #ccfbf1);
+        }
+
+        .details-box {
+            max-width: 850px;
+            margin: auto;
+            background: rgba(255,255,255,0.95);
+            padding: 40px;
+            border-radius: 22px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+        }
+
+        .details-box h1 {
+            color: #0b1f33;
+            margin-bottom: 30px;
+        }
+
+        .detail-card {
+            background: #f8fafc;
+            padding: 22px;
+            margin: 15px 0;
+            border-radius: 14px;
+            border-left: 5px solid #0f3d5e;
+        }
+
+        .detail-card p {
+            margin: 10px 0;
+            color: #172033;
+            font-size: 17px;
+        }
+
+        .detail-card strong {
+            color: #0b1f33;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 12px 22px;
+            background: #0f3d5e;
+            color: white !important;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        .back-btn:hover {
+            background: #075985;
+        }
+    </style>
+</head>
+
+<body class="details-page">
+
+    <div class="details-box">
+
+        <h1>🏢 Apartment Details</h1>
+
+        <div class="detail-card">
+
+            <p>
+                <strong>Apartment Number:</strong>
+                {{ resident.apartment.apartment_number }}
+            </p>
+
+            <p>
+                <strong>Floor:</strong>
+                {{ resident.apartment.floor }}
+            </p>
+
+            <p>
+                <strong>Block:</strong>
+                {{ resident.apartment.block }}
+            </p>
+
+        </div>
+
+        <a href="{% url 'resident_dashboard' %}" class="back-btn">
+            ← Back to Dashboard
+        </a>
+
+    </div>
+
+</body>
+</html>

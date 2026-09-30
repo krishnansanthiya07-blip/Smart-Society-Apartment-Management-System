@@ -1,0 +1,79 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Complaints</title>
+    <link rel="stylesheet" href="{% static 'core/style.css' %}">
+</head>
+
+<body class="admin-page">
+
+<div class="admin-container">
+
+    <h1>💬 Complaints</h1>
+    <p>Manage and track resident complaints</p>
+
+    <div class="payment-summary">
+
+        <div class="payment-card">
+            <h3>Total Complaints</h3>
+            <h2>{{ complaints|length }}</h2>
+        </div>
+
+    </div>
+
+    <hr>
+
+    <h2>Complaint List</h2>
+
+    {% for complaint in complaints %}
+
+    <div class="admin-card">
+
+        <h3>💬 {{ complaint.title }}</h3>
+
+        <p>
+            <strong>Resident:</strong>
+            {{ complaint.resident.name }}
+        </p>
+
+        <p>
+            <strong>Description:</strong>
+            {{ complaint.description }}
+        </p>
+
+        <p>
+            <strong>Status:</strong>
+            {{ complaint.get_status_display }}
+        </p>
+
+        <p>
+            <strong>Assigned To:</strong>
+
+            {% if complaint.assigned_to %}
+                {{ complaint.assigned_to.name }}
+            {% else %}
+                Not Assigned
+            {% endif %}
+
+        </p>
+
+    </div>
+
+    {% empty %}
+
+    <p>No complaints available.</p>
+
+    {% endfor %}
+
+    <br>
+
+    <a class="admin-button" href="{% url 'admin_dashboard' %}">
+        ← Back to Dashboard
+    </a>
+
+</div>
+
+</body>
+</html>

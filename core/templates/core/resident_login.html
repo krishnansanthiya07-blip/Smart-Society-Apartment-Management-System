@@ -1,0 +1,47 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Resident Login</title>
+    <link rel="stylesheet" href="{% static 'core/style.css' %}">
+</head>
+
+<body class="login-page">
+
+    <div class="login-container">
+
+        <h1>Resident Login</h1>
+
+        <form method="POST">
+            {% csrf_token %}
+
+            <label for="email">Email:</label>
+            <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Enter your email"
+                required
+            >
+
+            <label for="phone">Phone:</label>
+            <input
+                type="text"
+                id="phone"
+                name="phone"
+                placeholder="Enter your phone number"
+                required
+            >
+
+            <button type="submit">Login</button>
+        </form>
+
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% endif %}
+
+    </div>
+
+</body>
+</html>

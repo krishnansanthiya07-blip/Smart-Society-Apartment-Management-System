@@ -1,0 +1,45 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Maintenance Login</title>
+
+    <link rel="stylesheet" href="{% static 'core/style.css' %}">
+</head>
+
+<body class="login-page">
+
+    <div class="login-container">
+
+        <h1>🔧 Maintenance Login</h1>
+
+        <p>Login to manage assigned complaints</p>
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+            <label>Name</label>
+            <input type="text" name="name"
+                   placeholder="Enter your name" required>
+
+            <label>Phone</label>
+            <input type="text" name="phone"
+                   placeholder="Enter your phone number" required>
+
+            <button type="submit">Login</button>
+
+        </form>
+
+        <br>
+
+        <a href="/">Back to Home</a>
+
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,165 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Resident Dashboard</title>
+
+    <link rel="stylesheet" href="{% static 'core/style.css' %}">
+</head>
+
+<body class="resident-dashboard">
+
+    <!-- Sidebar -->
+
+    <aside class="sidebar">
+
+        <h2>🏢 Smart Society</h2>
+
+        <p>Apartment Management</p>
+
+        <a href="{% url 'resident_dashboard' %}">🏠 Dashboard</a>
+
+        <a href="{% url 'resident_profile' %}">👤 My Profile</a>
+
+        <a href="{% url 'apartment_details' %}">
+            🏢 Apartment Details
+        </a>
+
+        <a href="{% url 'payments' %}">💳 Payments</a>
+
+        <a href="{% url 'complaints' %}">💬 Complaints</a>
+
+        <a href="{% url 'maintenance' %}">🔧 Maintenance</a>
+
+        <a href="{% url 'resident_logout' %}">🚪 Logout</a>
+
+    </aside>
+
+
+    <!-- Main Content -->
+
+    <main class="dashboard-content">
+
+        <!-- Hero Section -->
+
+        <section class="dashboard-hero">
+
+            <div>
+
+                <p class="welcome-text">Welcome to</p>
+
+                <h1>Smart Society</h1>
+
+                <p>
+                    Your Home | Our Priority | A Smarter Community
+                </p>
+
+                <p>
+                    Manage your apartment, payments and complaints
+                    in one place.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- Resident Services -->
+
+        <h2 class="section-title">Resident Services</h2>
+
+        <section class="service-grid">
+
+            <a href="{% url 'resident_profile' %}" class="service-card">
+                <span>👤</span>
+                <h3>My Profile</h3>
+                <p>View your personal details</p>
+            </a>
+
+            <a href="{% url 'apartment_details' %}" class="service-card">
+                <span>🏢</span>
+                <h3>Apartment Details</h3>
+                <p>View your apartment information</p>
+            </a>
+
+            <a href="{% url 'payments' %}" class="service-card">
+                <span>💳</span>
+                <h3>Payments</h3>
+                <p>Check payment status and history</p>
+            </a>
+
+            <a href="{% url 'complaints' %}" class="service-card">
+                <span>💬</span>
+                <h3>Complaints</h3>
+                <p>Raise and track complaints</p>
+            </a>
+
+            <a href="{% url 'maintenance' %}" class="service-card">
+                <span>🔧</span>
+                <h3>Maintenance</h3>
+                <p>Track maintenance requests</p>
+            </a>
+
+        </section>
+
+
+        <!-- Quick Overview -->
+
+        <h2 class="section-title">Quick Overview</h2>
+
+        <section class="overview-grid">
+
+            <div class="overview-card">
+                <p>Apartment No.</p>
+                <h3>{{ resident.apartment.apartment_number }}</h3>
+            </div>
+
+            <div class="overview-card">
+                <p>Floor</p>
+                <h3>{{ resident.apartment.floor }}</h3>
+            </div>
+
+            <div class="overview-card">
+                <p>Block</p>
+                <h3>{{ resident.apartment.block }}</h3>
+            </div>
+
+            <div class="overview-card">
+                <p>Total Complaints</p>
+                <h3>{{ total_complaints }}</h3>
+            </div>
+
+        </section>
+        <!-- Other Login Options -->
+
+<section class="other-login">
+
+    <h2 class="section-title">Other Login Options</h2>
+
+    <a href="{% url 'admin_login' %}">
+        👨‍💼 Admin Login
+    </a>
+
+    <a href="{% url 'maintenance_login' %}">
+        🔧 Maintenance Login
+    </a>
+
+</section>
+
+
+        <!-- Footer -->
+
+        <footer>
+            Smart Society | Apartment Management System
+        </footer>
+
+    </main>
+
+
+
+</body>
+</html>

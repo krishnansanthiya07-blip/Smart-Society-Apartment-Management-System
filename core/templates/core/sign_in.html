@@ -1,0 +1,202 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Smart Society - Sign In</title>
+
+    <link rel="stylesheet" href="{% static 'core/style.css' %}">
+
+    <style>
+
+        body.login-page {
+            margin: 0;
+            min-height: 100vh;
+
+            background-image:
+                linear-gradient(
+                    rgba(5, 25, 45, 0.35),
+                    rgba(5, 25, 45, 0.35)
+                ),
+                url("{% static 'core/images/society-background.png' %}");
+
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            font-family: Arial, sans-serif;
+        }
+
+        .login-container {
+            width: 380px;
+            max-width: 90%;
+
+            padding: 35px;
+
+            background: rgba(255, 255, 255, 0.94);
+
+            border-radius: 20px;
+
+            box-shadow:
+                0 15px 40px rgba(0, 0, 0, 0.25);
+
+            text-align: center;
+
+            backdrop-filter: blur(8px);
+        }
+
+        .login-container h1 {
+            margin-bottom: 8px;
+            color: #123b63;
+            font-size: 30px;
+        }
+
+        .login-container p {
+            color: #5d7185;
+            margin-bottom: 25px;
+        }
+
+        .auth-options {
+            margin-bottom: 25px;
+        }
+
+        .auth-options a {
+            text-decoration: none;
+            color: #1266a3;
+            font-weight: bold;
+            margin: 0 10px;
+        }
+
+        .login-container form {
+            text-align: left;
+        }
+
+        .login-container label {
+            display: block;
+            margin-bottom: 7px;
+            color: #23415c;
+            font-weight: bold;
+        }
+
+        .login-container input {
+            width: 100%;
+            box-sizing: border-box;
+
+            padding: 13px 15px;
+            margin-bottom: 20px;
+
+            border: 1px solid #c8d7e5;
+            border-radius: 10px;
+
+            font-size: 15px;
+            outline: none;
+        }
+
+        .login-container input:focus {
+            border-color: #1677b8;
+            box-shadow: 0 0 0 3px rgba(22, 119, 184, 0.12);
+        }
+
+        .login-container button {
+            width: 100%;
+
+            padding: 14px;
+
+            border: none;
+            border-radius: 10px;
+
+            background: #1266a3;
+            color: white;
+
+            font-size: 16px;
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+        }
+
+        .login-container button:hover {
+            background: #0d4f80;
+            transform: translateY(-1px);
+        }
+
+        .signup-link {
+            margin-top: 20px;
+            font-size: 14px;
+        }
+
+        .signup-link a {
+            color: #1266a3;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+    </style>
+
+</head>
+
+<body class="login-page">
+
+    <div class="login-container">
+
+        <h1>🏢 Smart Society</h1>
+
+        <p>Welcome back! Sign in to your account.</p>
+
+        <div class="auth-options">
+
+            <a href="{% url 'sign_in' %}">
+                Sign In
+            </a>
+
+            <a href="{% url 'sign_up' %}">
+                Sign Up
+            </a>
+
+        </div>
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+            <label for="email">
+                Email Address
+            </label>
+
+            <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Enter your registered email"
+                required
+            >
+
+            <button type="submit">
+                Continue with Email
+            </button>
+
+        </form>
+
+        <div class="signup-link">
+
+            Don't have an account?
+            <a href="{% url 'sign_up' %}">
+                Sign Up
+            </a>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

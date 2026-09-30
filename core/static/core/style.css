@@ -1,0 +1,904 @@
+/* ================================================= */
+/* SMART SOCIETY - MAIN STYLE SHEET */
+/* ================================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+
+/* ================================================= */
+/* HOME PAGE */
+/* ================================================= */
+
+.hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px 20px;
+
+    background-image:
+        linear-gradient(
+            rgba(111, 156, 215, 0.35),
+            rgba(5, 20, 40, 0.35)
+        ),
+        url("/static/core/images/kismet_home.png");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.society-logo {
+    width: 180px;
+    height: 180px;
+    object-fit: contain;
+    margin: 0 auto 20px;
+    display: block;
+    border-radius: 18px;
+}
+
+.hero h1 {
+    font-size: 42px;
+    margin: 15px 0;
+    color: rgb(64, 155, 195);
+}
+
+.hero p {
+    font-size: 20px;
+    letter-spacing: 3px;
+    margin: 15px 0 35px;
+}
+
+.home-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+}
+
+.home-buttons a {
+    background: rgb(23, 134, 174);
+    color: #073b4c;
+    padding: 14px 25px;
+    border-radius: 30px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.home-buttons a:hover {
+    background: #f4c95d;
+    color: #071e3d;
+    transform: translateY(-4px);
+}
+
+
+/* ================================================= */
+/* CREATIVE LOGO */
+/* ================================================= */
+
+.creative-logo {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.logo-symbol {
+    width: 85px;
+    height: 85px;
+    margin: auto;
+    border: 3px solid #f4c95d;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 58px;
+    font-weight: bold;
+    color: #f4c95d;
+    box-shadow: 0 0 25px rgba(244, 201, 93, 0.4);
+}
+
+.logo-name {
+    margin-top: 12px;
+    font-size: 34px;
+    font-weight: bold;
+    letter-spacing: 6px;
+    color: rgb(15, 167, 173);
+}
+
+.logo-subtitle {
+    font-size: 18px;
+    letter-spacing: 8px;
+    color: #f4c95d;
+    margin-top: 5px;
+}
+
+
+/* ================================================= */
+/* COMMON LOGIN PAGE */
+/* ================================================= */
+
+.login-page {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #05668d, #02c39a);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-container {
+    background: rgba(255, 255, 255, 0.94);
+    padding: 45px;
+    border-radius: 30px;
+    width: 420px;
+    max-width: 90%;
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.2);
+}
+
+.login-container h1 {
+    color: #0f172a;
+    text-align: center;
+}
+
+.login-container p {
+    color: #334155;
+    text-align: center;
+}
+
+.login-container label {
+    display: block;
+    color: #1e293b;
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+.login-container input {
+    width: 100%;
+    background: #ffffff;
+    color: #172033;
+    border: 1px solid #94a3b8;
+    padding: 12px;
+    margin-top: 5px;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+.login-container input::placeholder {
+    color: #64748b;
+}
+
+.login-container button {
+    margin-top: 20px;
+    padding: 12px 25px;
+    cursor: pointer;
+    border: none;
+    border-radius: 8px;
+    background: #0f3d5e;
+    color: white;
+    font-weight: bold;
+}
+
+.login-container button:hover {
+    background: #075985;
+}
+
+.auth-options {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.auth-options a {
+    background: #2563eb;
+    color: white;
+    padding: 12px 25px;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+
+/* ================================================= */
+/* RESIDENT DASHBOARD */
+/* ================================================= */
+
+.resident-dashboard {
+    display: flex;
+    padding: 0;
+    background: linear-gradient(135deg, #dbeafe, #ccfbf1);
+    min-height: 100vh;
+}
+
+
+/* Sidebar */
+
+.resident-dashboard .sidebar {
+    width: 250px;
+    min-height: 100vh;
+    padding: 30px 20px;
+    background: #0b1f33;
+    color: white;
+    position: fixed;
+    left: 0;
+    top: 0;
+}
+
+.resident-dashboard .sidebar h2 {
+    color: white;
+    margin-bottom: 5px;
+}
+
+.resident-dashboard .sidebar p {
+    color: #cbd5e1;
+    font-size: 13px;
+}
+
+.resident-dashboard .sidebar a {
+    display: block;
+    color: #e2e8f0;
+    padding: 16px 10px;
+    margin: 8px 0;
+    border-radius: 10px;
+    text-decoration: none;
+}
+
+.resident-dashboard .sidebar a:hover {
+    background: #123b5d;
+    color: white;
+}
+
+
+/* Main Content */
+
+.resident-dashboard .dashboard-content {
+    margin-left: 250px;
+    width: calc(100% - 250px);
+    padding: 25px;
+    color: #172033;
+}
+
+
+/* Dashboard Hero */
+
+.resident-dashboard .dashboard-hero {
+    min-height: 280px;
+    padding: 45px;
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            rgba(255, 255, 255, 0.85),
+            rgba(235, 248, 255, 0.85)
+        ),
+        url("/static/core/images/kismet_home.png");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    display: flex;
+    align-items: center;
+
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.10);
+}
+
+.resident-dashboard .dashboard-hero h1 {
+    font-size: 45px;
+    color: #0b1f33;
+    margin: 5px 0;
+}
+
+.resident-dashboard .welcome-text {
+    font-size: 25px;
+    color: #0f3d5e;
+    font-weight: bold;
+}
+
+.resident-dashboard .dashboard-hero p {
+    color: #334155;
+}
+
+
+/* Section Titles */
+
+.resident-dashboard .section-title {
+    color: #0b1f33;
+    margin: 30px 0 18px;
+}
+
+
+/* Services */
+
+.resident-dashboard .service-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 15px;
+}
+
+.resident-dashboard .service-card {
+    background: white;
+    padding: 25px 15px;
+    border-radius: 18px;
+    text-align: center;
+    text-decoration: none;
+    color: #172033;
+
+    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.10);
+
+    transition: 0.3s;
+}
+
+.resident-dashboard .service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.16);
+}
+
+.resident-dashboard .service-card span {
+    font-size: 35px;
+}
+
+.resident-dashboard .service-card h3 {
+    color: #0f3d5e;
+}
+
+.resident-dashboard .service-card p {
+    color: #334155;
+    font-size: 14px;
+}
+
+
+/* Overview */
+
+.resident-dashboard .overview-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+.resident-dashboard .overview-card {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.10);
+}
+
+.resident-dashboard .overview-card p {
+    color: #475569;
+}
+
+.resident-dashboard .overview-card h3 {
+    color: #0b1f33;
+    font-size: 25px;
+}
+
+
+/* Other Login */
+
+.resident-dashboard .other-login {
+    background: rgba(255, 255, 255, 0.90);
+    border-radius: 16px;
+    padding: 20px;
+    margin-top: 25px;
+}
+
+.resident-dashboard .other-login a {
+    display: inline-block;
+    color: #0f3d5e;
+    font-weight: bold;
+    margin-right: 20px;
+}
+
+
+/* Footer */
+
+.resident-dashboard footer {
+    margin-top: 40px;
+    padding: 20px;
+    text-align: center;
+    color: #334155;
+}
+
+
+/* ================================================= */
+/* ADMIN PAGES */
+/* ================================================= */
+
+.admin-page {
+    min-height: 100vh;
+    margin: 0;
+    padding: 30px;
+    background: linear-gradient(135deg, #dbeafe, #ccfbf1, #dbeafe);
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+.admin-container {
+    max-width: 1200px;
+    margin: auto;
+    background: rgba(255, 255, 255, 0.94);
+    padding: 35px;
+    border-radius: 22px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    color: #1e293b;
+}
+
+.admin-container h1 {
+    color: #0f172a;
+    margin-bottom: 25px;
+}
+
+.admin-container h2 {
+    color: #1e293b;
+}
+
+.admin-container h3 {
+    color: #0f172a;
+}
+
+.admin-container p,
+.admin-container label {
+    color: #334155;
+}
+
+.admin-container strong {
+    color: #0b1220;
+}
+
+.admin-container a {
+    color: #075985;
+}
+
+.admin-container table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.admin-container th {
+    background: #0f3d5e;
+    color: white;
+    padding: 14px;
+    text-align: left;
+}
+
+.admin-container td {
+    padding: 13px;
+    border-bottom: 1px solid #e2e8f0;
+    color: #172033;
+}
+
+.admin-container tr:hover {
+    background: #f0fdfa;
+}
+
+.admin-container input,
+.admin-container select,
+.admin-container textarea {
+    width: 100%;
+    padding: 11px;
+    margin: 7px 0 15px;
+    border: 1px solid #94a3b8;
+    border-radius: 8px;
+    box-sizing: border-box;
+    font-size: 15px;
+    color: #172033;
+    background: white;
+}
+
+.admin-container button {
+    background: #0f3d5e;
+    color: white;
+    border: none;
+    padding: 11px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.admin-container button:hover {
+    background: #075985;
+}
+
+.admin-card {
+    background: white;
+    padding: 22px;
+    margin: 15px 0;
+    border-radius: 15px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+}
+
+.admin-card h3 {
+    color: #082f49;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.admin-card p {
+    color: #172033 !important;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.admin-card strong {
+    color: #0b1220 !important;
+    font-weight: 700;
+}
+
+.admin-button {
+    display: inline-block;
+    background: #0f3d5e;
+    color: white !important;
+    padding: 11px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    margin: 5px;
+}
+
+.admin-button:hover {
+    background: #075985;
+}
+
+
+/* ================================================= */
+/* MAINTENANCE LOGIN */
+/* ================================================= */
+
+.maintenance-login {
+    min-height: 100vh;
+}
+
+
+/* ================================================= */
+/* MAINTENANCE DASHBOARD */
+/* ================================================= */
+
+.maintenance-page {
+    min-height: 100vh;
+    padding: 30px;
+    background: linear-gradient(135deg, #dbeafe, #ccfbf1);
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+.maintenance-container {
+    max-width: 1100px;
+    margin: auto;
+    background: rgba(255, 255, 255, 0.94);
+    padding: 35px;
+    border-radius: 22px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+.maintenance-container h2 {
+    color: #0f172a;
+    font-size: 30px;
+}
+
+.maintenance-container h3 {
+    color: #123b5d;
+}
+
+.maintenance-container p {
+    color: #172033;
+    font-size: 16px;
+}
+
+.maintenance-container strong {
+    color: #0b1220;
+}
+
+.complaint-card {
+    background: white;
+    padding: 25px;
+    margin: 20px 0;
+    border-radius: 15px;
+    border-left: 5px solid #0f3d5e;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.10);
+}
+
+.complaint-card h4 {
+    color: #0f3d5e;
+    font-size: 21px;
+}
+
+.complaint-card p {
+    color: #172033;
+}
+
+.complaint-card hr {
+    border: none;
+    border-top: 1px solid #dbe3ea;
+    margin: 20px 0;
+}
+
+.complaint-card select {
+    padding: 11px;
+    border: 1px solid #94a3b8;
+    border-radius: 8px;
+    color: #172033;
+    background: white;
+    margin: 10px 0;
+    font-size: 15px;
+}
+
+.complaint-card button {
+    padding: 11px 20px;
+    border: none;
+    border-radius: 8px;
+    background: #0f3d5e;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.complaint-card button:hover {
+    background: #075985;
+}
+
+.maintenance-logout {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 20px;
+    background: #0f3d5e;
+    color: white !important;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+.maintenance-logout:hover {
+    background: #082f49;
+}
+
+
+/* ================================================= */
+/* MAINTENANCE TEAM PAGE */
+/* ================================================= */
+
+.maintenance-team-page {
+    min-height: 100vh;
+    margin: 0;
+    padding: 35px;
+    background: linear-gradient(135deg, #dbeafe, #ccfbf1);
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+.maintenance-team-container {
+    max-width: 1100px;
+    margin: auto;
+    background: rgba(255, 255, 255, 0.94);
+    padding: 35px;
+    border-radius: 22px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+.maintenance-team-container h1 {
+    color: #0b1f33;
+    font-size: 32px;
+}
+
+.page-subtitle {
+    color: #475569;
+    font-size: 16px;
+    margin-bottom: 30px;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+}
+
+.team-card {
+    background: white;
+    padding: 25px;
+    border-radius: 16px;
+    border-left: 5px solid #0f3d5e;
+    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.10);
+    transition: 0.2s ease;
+}
+
+.team-card:hover {
+    transform: translateY(-4px);
+}
+
+.team-icon {
+    font-size: 32px;
+}
+
+.team-card h2 {
+    color: #0f3d5e;
+    margin-bottom: 18px;
+}
+
+.team-card p {
+    color: #172033;
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+.team-card strong {
+    color: #0b1220;
+}
+
+.empty-team {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+}
+
+.empty-team h2 {
+    color: #0b1f33;
+}
+
+.empty-team p {
+    color: #475569;
+}
+
+.back-dashboard {
+    display: inline-block;
+    padding: 11px 20px;
+    background: #0f3d5e;
+    color: white !important;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+.back-dashboard:hover {
+    background: #082f49;
+}
+
+
+/* ================================================= */
+/* PAYMENT CARD */
+/* ================================================= */
+
+.payment-card {
+    background: white;
+    padding: 20px;
+    margin: 15px 0;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.10);
+}
+
+.payment-card p {
+    margin: 8px 0;
+    color: #172033;
+}
+
+
+/* ================================================= */
+/* GENERAL CONTAINER */
+/* ================================================= */
+
+.container {
+    background: rgba(255, 255, 255, 0.94);
+    backdrop-filter: blur(12px);
+    border-radius: 25px;
+    padding: 50px;
+    min-height: 80vh;
+}
+
+.container h1 {
+    color: #0b1f33;
+}
+
+.container h2 {
+    color: #0f3d5e;
+}
+
+.container p {
+    color: #334155;
+    font-size: 17px;
+}
+
+.container a {
+    text-decoration: none;
+    color: #075985;
+    font-weight: bold;
+}
+
+
+/* ================================================= */
+/* MOBILE RESPONSIVE */
+/* ================================================= */
+
+@media (max-width: 900px) {
+
+    .resident-dashboard .sidebar {
+        width: 190px;
+    }
+
+    .resident-dashboard .dashboard-content {
+        margin-left: 190px;
+        width: calc(100% - 190px);
+    }
+
+    .resident-dashboard .service-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .resident-dashboard .overview-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .hero h1 {
+        font-size: 28px;
+    }
+
+    .hero p {
+        font-size: 14px;
+        letter-spacing: 2px;
+    }
+
+    .home-buttons {
+        flex-direction: column;
+        width: 80%;
+    }
+
+    .home-buttons a {
+        width: 100%;
+    }
+
+    .resident-dashboard {
+        display: block;
+    }
+
+    .resident-dashboard .sidebar {
+        position: relative;
+        width: 100%;
+        min-height: auto;
+    }
+
+    .resident-dashboard .dashboard-content {
+        margin-left: 0;
+        width: 100%;
+        padding: 15px;
+    }
+
+    .resident-dashboard .dashboard-hero {
+        padding: 30px 20px;
+    }
+
+    .resident-dashboard .dashboard-hero h1 {
+        font-size: 30px;
+    }
+
+    .resident-dashboard .service-grid,
+    .resident-dashboard .overview-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .admin-page,
+    .maintenance-page,
+    .maintenance-team-page {
+        padding: 15px;
+    }
+
+    .admin-container,
+    .maintenance-container,
+    .maintenance-team-container {
+        padding: 20px;
+    }
+
+    .login-container {
+        width: 90%;
+        padding: 30px;
+    }
+}

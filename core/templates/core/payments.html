@@ -1,0 +1,183 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Payments</title>
+
+    <link rel="stylesheet" href="{% static 'core/style.css' %}">
+
+    <style>
+        .payment-page {
+            min-height: 100vh;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #dbeafe, #ccfbf1);
+        }
+
+        .payment-container {
+            max-width: 1000px;
+            margin: auto;
+            background: rgba(255,255,255,0.95);
+            padding: 40px;
+            border-radius: 22px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+        }
+
+        .payment-container h1 {
+            color: #0b1f33;
+            margin-bottom: 25px;
+        }
+
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+            margin-bottom: 30px;
+        }
+
+        .summary-card {
+            background: #f8fafc;
+            padding: 22px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        .summary-card h3 {
+            color: #0b1f33;
+            margin-bottom: 10px;
+        }
+
+        .summary-card h2 {
+            color: #0f3d5e;
+        }
+
+        .payment-card {
+            background: #f8fafc;
+            padding: 22px;
+            margin: 18px 0;
+            border-radius: 15px;
+            border-left: 5px solid #0f3d5e;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        .payment-card p {
+            color: #172033;
+            font-size: 16px;
+            margin: 10px 0;
+        }
+
+        .payment-card strong {
+            color: #0b1f33;
+        }
+
+        .pay-btn {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 11px 20px;
+            background: #0f3d5e;
+            color: white !important;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 22px;
+            background: #0f3d5e;
+            color: white !important;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        @media (max-width: 700px) {
+            .summary-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body class="payment-page">
+
+<div class="payment-container">
+
+    <h1>💳 Payment Details</h1>
+
+    <div class="summary-grid">
+
+        <div class="summary-card">
+            <h3>Total Amount</h3>
+            <h2>₹{{ total_amount }}</h2>
+        </div>
+
+        <div class="summary-card">
+            <h3>Paid Amount</h3>
+            <h2>₹{{ paid_amount }}</h2>
+        </div>
+
+        <div class="summary-card">
+            <h3>Pending Amount</h3>
+            <h2>₹{{ pending_amount }}</h2>
+        </div>
+
+    </div>
+
+    <h2>Payment History</h2>
+
+    {% if payments %}
+
+        {% for payment in payments %}
+
+            <div class="payment-card">
+
+                <p>
+                    <strong>Amount:</strong>
+                    ₹{{ payment.amount }}
+                </p>
+
+                <p>
+                    <strong>Status:</strong>
+                    {{ payment.get_status_display }}
+                </p>
+
+                <p>
+                    <strong>Date:</strong>
+                    {{ payment.payment_date }}
+                </p>
+
+            </div>
+
+        {% endfor %}
+
+    {% else %}
+
+        <div class="payment-card">
+            <p>No payment records available.</p>
+        </div>
+
+    {% endif %}
+
+    {% if pending_amount > 0 %}
+        <a href="{% url 'make_payment' %}" 
+        class="pay-btn">
+            💳 Pay Now
+        </a>
+    {% endif %}
+
+    <br>
+
+    <a href="{% url 'resident_dashboard' %}" class="back-btn">
+        ← Back to Dashboard
+    </a>
+
+</div>
+
+</body>
+</html>

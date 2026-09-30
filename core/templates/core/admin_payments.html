@@ -1,0 +1,180 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Payments</title>
+
+    <link rel="stylesheet" href="{% static 'core/style.css' %}">
+</head>
+
+<body class="admin-page">
+
+<div class="admin-container">
+
+    <h1>💳 Payments</h1>
+    <p>Manage resident payment details</p>
+
+
+    <!-- Overall Payment Summary -->
+
+    <div class="payment-summary">
+
+        <div class="payment-card">
+            <h3>Total Amount</h3>
+            <h2>₹{{ total_amount }}</h2>
+        </div>
+
+        <div class="payment-card">
+            <h3>Paid Amount</h3>
+            <h2>₹{{ paid_amount }}</h2>
+        </div>
+
+        <div class="payment-card">
+            <h3>Pending Amount</h3>
+            <h2>₹{{ pending_amount }}</h2>
+        </div>
+
+    </div>
+
+
+    <hr>
+
+
+    <h2>Resident Payment List</h2>
+
+
+    {% for payment in payment_list %}
+
+    <div class="admin-card">
+
+        <h3>👤 {{ payment.name }}</h3>
+
+
+        <!-- Total Amount -->
+
+        <p>
+            <strong>Total Amount:</strong>
+            ₹{{ payment.total }}
+        </p>
+
+
+        <!-- Edit Total Amount -->
+
+        <form method="POST" style="margin-bottom: 15px;">
+
+            {% csrf_token %}
+
+            <input type="hidden" name="action" value="update_total">
+
+            <input type="hidden" name="resident" value="{{ payment.id }}">
+
+            <label>
+                <strong>Change Total Amount:</strong>
+            </label>
+
+            <input
+                type="number"
+                name="total_amount"
+                value="{{ payment.total }}"
+                min="0"
+                step="0.01"
+                required
+            >
+
+            <button type="submit">
+                Update Total
+            </button>
+
+        </form>
+
+
+        <!-- Paid Amount -->
+
+        <p>
+            <strong>Paid Amount:</strong>
+            ₹{{ payment.paid }}
+        </p>
+
+
+        <!-- Pending Amount -->
+
+        <p>
+            <strong>Pending Amount:</strong>
+            ₹{{ payment.pending }}
+        </p>
+
+
+        <!-- Add Payment -->
+
+        {% if payment.pending > 0 %}
+
+        <form method="POST" style="margin-top: 15px;">
+
+            {% csrf_token %}
+
+            <input type="hidden" name="action" value="add_payment">
+
+            <input type="hidden" name="resident" value="{{ payment.id }}">
+
+            <label>
+                <strong>Payment Amount:</strong>
+            </label>
+
+            <input
+                type="number"
+                name="amount"
+                min="0.01"
+                max="{{ payment.pending }}"
+                step="0.01"
+                placeholder="Enter amount"
+                required
+            >
+
+            <button type="submit">
+                💰 Add Payment
+            </button>
+
+        </form>
+
+        {% endif %}
+
+
+        <!-- Status -->
+
+        <p style="margin-top: 15px;">
+            <strong>Status:</strong>
+            {{ payment.status }}
+        </p>
+
+
+        <!-- Date -->
+
+        <p>
+            <strong>Date:</strong>
+            {{ payment.date }}
+        </p>
+
+    </div>
+
+    {% empty %}
+
+    <p>No residents available.</p>
+
+    {% endfor %}
+
+
+    <br>
+
+    <a class="admin-button" href="{% url 'admin_dashboard' %}">
+        ← Back to Dashboard
+    </a>
+
+</div>
+
+</body>
+</html>

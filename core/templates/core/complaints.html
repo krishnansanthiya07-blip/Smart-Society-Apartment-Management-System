@@ -1,0 +1,127 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Complaints</title>
+
+    <link rel="stylesheet" href="{% static 'core/style.css' %}">
+
+    <style>
+        .complaints-page {
+            min-height: 100vh;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #dbeafe, #ccfbf1);
+        }
+
+        .complaints-container {
+            max-width: 1050px;
+            margin: auto;
+            background: rgba(255,255,255,0.95);
+            padding: 40px;
+            border-radius: 22px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+        }
+
+        .complaints-container h1 {
+            color: #0b1f33;
+        }
+
+        .add-btn {
+            display: inline-block;
+            margin: 15px 0 25px;
+            padding: 12px 20px;
+            background: #0f3d5e;
+            color: white !important;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        .complaint-box {
+            background: #f8fafc;
+            padding: 23px;
+            margin: 18px 0;
+            border-radius: 15px;
+            border-left: 5px solid #0f3d5e;
+        }
+
+        .complaint-box h3 {
+            color: #0f3d5e;
+            margin-top: 0;
+        }
+
+        .complaint-box p {
+            color: #172033;
+            font-size: 16px;
+        }
+
+        .complaint-box strong {
+            color: #0b1f33;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 22px;
+            background: #0f3d5e;
+            color: white !important;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body class="complaints-page">
+
+    <div class="complaints-container">
+
+        <h1>💬 My Complaints</h1>
+
+        <a href="{% url 'add_complaint' %}" class="add-btn">
+            + Add Complaint
+        </a>
+
+        {% if complaints %}
+
+            {% for complaint in complaints %}
+
+                <div class="complaint-box">
+
+                    <h3>{{ complaint.title }}</h3>
+
+                    <p>
+                        <strong>Description:</strong>
+                        {{ complaint.description }}
+                    </p>
+
+                    <p>
+                        <strong>Status:</strong>
+                        {{ complaint.get_status_display }}
+                    </p>
+                    <p><strong>Date:</strong> {{ complaint.created_at|date:"d-m-Y" }}</p>
+
+                </div>
+
+            {% endfor %}
+
+        {% else %}
+
+            <div class="complaint-box">
+                <p>No complaints raised yet.</p>
+            </div>
+
+        {% endif %}
+
+        <a href="{% url 'resident_dashboard' %}" class="back-btn">
+            ← Back to Dashboard
+        </a>
+
+    </div>
+
+</body>
+</html>

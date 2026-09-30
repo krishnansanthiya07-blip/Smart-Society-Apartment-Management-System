@@ -1,0 +1,68 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Manage Apartments</title>
+    <link rel="stylesheet" href="{% static 'core/style.css' %}">
+</head>
+
+<body class="admin-page">
+
+<div class="admin-container">
+
+    <h1>Manage Apartments</h1>
+
+    <h2>Add Apartment</h2>
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <label>Apartment Number:</label>
+        <input type="text" name="apartment_number" required>
+
+        <label>Floor:</label>
+        <input type="number" name="floor" required>
+
+        <label>Block:</label>
+        <input type="text" name="block" required>
+
+        <button type="submit">Add Apartment</button>
+    </form>
+
+    <hr>
+
+    <h2>Apartment List</h2>
+
+    {% for apartment in apartments %}
+
+        <div class="admin-card">
+
+            <h3>🏢 {{ apartment.apartment_number }}</h3>
+
+            <p>
+                <strong>Floor:</strong> {{ apartment.floor }}
+            </p>
+
+            <p>
+                <strong>Block:</strong> {{ apartment.block }}
+            </p>
+
+        </div>
+
+    {% empty %}
+
+        <p>No apartments added yet.</p>
+
+    {% endfor %}
+
+    <br>
+
+    <a class="admin-button" href="{% url 'admin_dashboard' %}">
+        ← Back to Dashboard
+    </a>
+
+</div>
+
+</body>
+</html>
