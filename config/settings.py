@@ -103,18 +103,10 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # https://docs.djangoproject.com/en/6.1/ref/settings/#databases
 
 DATABASES = {
-  'default':dj_database_url.config(
-        default=os.getenv('DATABASE_URL')
+  'default': dj_database_url.config(
+default=os.getenv('DATABASE_URL')
     )
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'smart_society',
-        'USER': 'root',
-        'PASSWORD': 'MYsql@00',
-        'HOST': 'localhost',
-        'PORT': '3306',
-    }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/6.1/ref/settings/#auth-password-validators
