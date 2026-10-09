@@ -15,49 +15,61 @@ def sign_up(request):
     return render(request,"core/sign_up.html")
 
 def sign_in(request):
-    if request.method == "POST":
-        email = request.POST.get("email")
+if request.method == "POST":
+email = request.POST.get("email", "").strip().lower()
 
-        otp = str(random.randint(100000, 999999))
+    if not email:
+        return render(request, "core/sign_in.html", {
+            "error": "Please enter your email."
+        })
 
-        request.session["email"] = email
-        request.session["otp"] = otp
+    otp = str(random.randint(100000, 999999))
 
-        url = "https://api.brevo.com/v3/smtp/email"
+    url = "https://api.brevo.com/v3/smtp/email"
 
-        headers = {
-            "accept": "application/json",
-            "api-key": settings.BREVO_API_KEY,
-            "content-type": "application/json",
-        }
+    headers = {
+        "accept": "application/json",
+        "api-key": settings.BREVO_API_KEY,
+        "content-type": "application/json",
+    }
 
-        data = {
-            "sender": {
-                "name": "Smart Society",
-                "email": "krishnansanthiya07@gmail.com"
-            },
-            "to": [
-                {
-                    "email": email
-                }
-            ],
-            "subject": "Smart Society - OTP",
-            "htmlContent": f"<p>Your OTP is <strong>{otp}</strong></p>",
-        }
+    data = {
+        "sender": {
+            "name": "Smart Society",
+            "email": "krishnansanthiya07@gmail.com"
+        },
+        "to": [
+            {
+                "email": email
+            }
+        ],
+        "subject": "Smart Society - OTP",
+        "htmlContent": f"<p>Your OTP is <strong>{otp}</strong></p>",
+    }
 
-        response = requests.post(url, headers=headers, json=data)
-
-        if response.status_code in [200, 201]:
-            return redirect("otp_verification")
-
-        return render(
-            request,
-            "core/sign_in.html",
-            {"error": "Failed to send OTP."}
+    try:
+        response = requests.post(
+            url,
+            headers=headers,
+            json=data,
+            timeout=15
         )
 
-    return render(request, "core/sign_in.html")
+        if response.status_code in [200, 201, 202]:
+            request.session["email"] = email
+            request.session["otp"] = otp
+            request.session.set_expiry(300)
+            return redirect("otp_verification")
 
+        return render(request, "core/sign_in.html", {
+            "error": "Failed to send OTP. Please try again."
+        })
+
+    except requests.RequestException:
+        return render(request, "core/sign_in.html", {
+            "error": "Email service unavailable. Please try again."
+        })
+    return render(request, "core/sign_in.html")
 
 def home(request):
     return render(request, 'core/home.html')
@@ -608,7 +620,6 @@ def delete_resident(request, resident_id):
 
     return redirect("manage_residents")
 
-
 def otp_verification(request):
     if request.method == 'POST':
         entered_otp = request.POST.get('otp', '').strip()
@@ -616,27 +627,42 @@ def otp_verification(request):
         email = request.session.get('email')
 
         if not session_otp or not email:
-            messages.error(request, "OTP expired. Please sign in again.")
+            messages.error(
+                request,
+                "OTP expired. Please sign in again."
+            )
             return redirect('sign_in')
 
-        if entered_otp == session_otp:
-            try:
-                resident = Resident.objects.get(email=email)
+        if entered_otp != session_otp:
+            messages.error(
+                request,
+                "Incorrect OTP. Please try again."
+            )
+            return render(
+                request,
+                'core/otp_verification.html'
+            )
 
-                request.session['resident_id'] = resident.id
-                request.session.pop('otp', None)
-                request.session.pop('email', None)
+        try:
+            resident = Resident.objects.get(
+                email__iexact=email.strip()
+            )
 
-                return redirect('resident_dashboard')
+            request.session['resident_id'] = resident.id
+            request.session.pop('otp', None)
+            request.session.pop('email', None)
 
-            except Resident.DoesNotExist:
-                messages.error(request, "Resident email not found.")
-                return redirect('sign_in')
+            return redirect('resident_dashboard')
 
-        else:
-            messages.error(request, "Incorrect OTP. Please try again.")
+        except Resident.DoesNotExist:
+            messages.error(
+                request,
+                "Resident email not found. Contact your admin."
+            )
+            return redirect('sign_in')
 
-    return render(request, 'core/otp_verification.html')
+    return render(request, 'core/otp_verification.html')s
+
 def maintenance_logout(request):
     request.session.pop('maintenance_member_id',None)
     return redirect('maintenance_login')
