@@ -1,4 +1,5 @@
 from django import core
+from django.core.checks import messages
 from django.http import request
 from django.shortcuts import render, redirect,get_object_or_404
 from django.db.models import Sum
@@ -8,6 +9,7 @@ import random
 from django.core.mail import send_mail
 import requests
 from django.conf import settings
+from django.contrib import messages
 
 def sign_up(request):
     return render(request,"core/sign_up.html")
@@ -608,30 +610,33 @@ def delete_resident(request, resident_id):
 
 
 def otp_verification(request):
-
     if request.method == 'POST':
-
-        entered_otp = request.POST.get('otp')
-        session_otp = request.session.get('otp')
+        entered_otp = request.POST.get('otp', '').strip()
+        session_otp = str(request.session.get('otp', ''))
         email = request.session.get('email')
 
-        if entered_otp == session_otp:
+        if not session_otp or not email:
+            messages.error(request, "OTP expired. Please sign in again.")
+            return redirect('sign_in')
 
+        if entered_otp == session_otp:
             try:
                 resident = Resident.objects.get(email=email)
 
                 request.session['resident_id'] = resident.id
-
                 request.session.pop('otp', None)
+                request.session.pop('email', None)
 
                 return redirect('resident_dashboard')
 
             except Resident.DoesNotExist:
-
+                messages.error(request, "Resident email not found.")
                 return redirect('sign_in')
 
-    return render(request, 'core/otp_verification.html')
+        else:
+            messages.error(request, "Incorrect OTP. Please try again.")
 
+    return render(request, 'core/otp_verification.html')
 def maintenance_logout(request):
     request.session.pop('maintenance_member_id',None)
     return redirect('maintenance_login')
