@@ -35,4 +35,5 @@ urlpatterns = [
     path('otp-verification/', views.otp_verification, name='otp_verification'),
     path('maintenance-logout/',views.maintenance_logout,name='maintenance_logout'),
     path('make-payment/',views.make_payment,name='make_payment'),
+    path("resident-dashboard/",views.resident_dashboard,name="resident_dashboard"),
 ]

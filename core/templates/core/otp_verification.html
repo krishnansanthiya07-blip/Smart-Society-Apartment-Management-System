@@ -6,37 +6,161 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Verify OTP - Smart Society</title>
+    <title>Verify OTP | Smart Society</title>
 
-    <link rel="stylesheet" href="{% static 'core/style.css' %}">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            background: linear-gradient(
+                135deg,
+                #0b1d3a,
+                #126e82,
+                #62c9c9
+            );
+        }
+
+        .otp-container {
+            width: 100%;
+            max-width: 420px;
+            padding: 35px 30px;
+            background: rgba(255, 255, 255, 0.96);
+            border-radius: 16px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+            text-align: center;
+        }
+
+        .otp-container h1 {
+            color: #0b1d3a;
+            font-size: 27px;
+            margin-bottom: 12px;
+        }
+
+        .otp-container p {
+            color: #444;
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 22px;
+        }
+
+        label {
+            display: block;
+            text-align: left;
+            color: #0b1d3a;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        input {
+            width: 100%;
+            padding: 13px;
+            border: 1px solid #aab7c4;
+            border-radius: 8px;
+            font-size: 20px;
+            text-align: center;
+            letter-spacing: 6px;
+            margin-bottom: 20px;
+            outline: none;
+        }
+
+        input:focus {
+            border-color: #126e82;
+            box-shadow: 0 0 5px rgba(18, 110, 130, 0.4);
+        }
+
+        button {
+            width: 100%;
+            padding: 13px;
+            background: #0b1d3a;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #126e82;
+        }
+
+        .message {
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 6px;
+            color: #842029;
+            background: #f8d7da;
+            font-size: 14px;
+            overflow-wrap: anywhere;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            color: #126e82;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 
 <body>
 
-    <div class="login-container">
+    <div class="otp-container">
 
-        <h2>🔐 Verify OTP</h2>
+        <h1>Verify Your OTP</h1>
 
-        <p>OTP has been sent to your registered email.</p>
+        <p>
+            We've sent a verification code to your email address.
+            Enter the six-digit OTP to access your Resident Dashboard.
+        </p>
 
-        <form method="POST">
+        {% if messages %}
+            {% for message in messages %}
+                <div class="message">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+
+        <form method="POST" action="{% url 'otp_verification' %}">
             {% csrf_token %}
+
+            <label for="otp">Enter 6-Digit OTP</label>
 
             <input
                 type="text"
+                id="otp"
                 name="otp"
-                placeholder="Enter 6-digit OTP"
                 maxlength="6"
-                minlength="6"
                 pattern="[0-9]{6}"
                 inputmode="numeric"
+                autocomplete="one-time-code"
+                placeholder="000000"
                 required
             >
 
-            <button type="submit">
-                Verify OTP
-            </button>
+            <button type="submit">Verify OTP</button>
         </form>
+
+        <a href="{% url 'sign_in' %}" class="back-link">
+            Back to Sign In
+        </a>
 
     </div>
 

@@ -181,10 +181,15 @@
             >
 
             <button type="submit">
-                Continue with Email
+                Send OTP
             </button>
 
         </form>
+        {% if messages %}
+            {% for message in messages %}
+                <p>{{message}}</p>
+            {% endfor %}
+        {% endif %}
 
         <div class="signup-link">
 
